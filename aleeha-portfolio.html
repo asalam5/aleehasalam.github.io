@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aleeha Salam | IT & Cybersecurity</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #1a0a0e;
+      --bg2: #200d12;
+      --surface: #2a1018;
+      --border: #3d1a24;
+      --accent: #d4849a;
+      --accent2: #c9a0b0;
+      --text: #f2e4e8;
+      --muted: #8a6570;
+      --soft: #c4a0ad;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(12,12,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(212,132,154,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,132,154,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(180,60,90,0.10) 0%, transparent 70%);
+      top: 10%; left: -100px;
+      pointer-events: none;
+    }
+
+    .hero-glow2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(212,132,154,0.08) 0%, transparent 70%);
+      bottom: 5%; right: -80px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      display: inline-block;
+      width: 40px; height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 2.5rem;
+      line-height: 2;
+    }
+
+    .hero-subtitle span {
+      color: var(--accent2);
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 0.75rem 2rem;
+      background: var(--accent);
+      color: #1a0a0e;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .btn-primary:hover {
+      background: #e0a0b5;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      padding: 0.75rem 2rem;
+      border: 1px solid var(--border);
+      color: var(--soft);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 3rem;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 24px; height: 1px;
+      background: var(--accent);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      margin-bottom: 3.5rem;
+      line-height: 1.1;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--bg2);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--soft);
+      font-size: 0.82rem;
+      line-height: 2.1;
+      margin-bottom: 1.4rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .stat-box {
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--accent);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    .about-langs {
+      margin-top: 1.5rem;
+    }
+
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.75rem;
+    }
+
+    .lang-name { color: var(--text); }
+    .lang-level { color: var(--accent); font-size: 0.65rem; letter-spacing: 0.1em; }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--bg); }
+
+    .exp-list { display: flex; flex-direction: column; gap: 0; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+      position: relative;
+    }
+
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: transparent;
+      transition: background 0.3s;
+    }
+
+    .exp-item:hover::before { background: var(--accent); }
+
+    .exp-meta { padding-left: 1.5rem; }
+
+    .exp-date {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .exp-type {
+      display: inline-block;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      border: 1px solid rgba(124,155,189,0.3);
+      padding: 0.2rem 0.6rem;
+    }
+
+    .exp-role {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+      line-height: 1.2;
+    }
+
+    .exp-org {
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .exp-bullets li {
+      font-size: 0.75rem;
+      color: var(--soft);
+      line-height: 1.75;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--border);
+    }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--bg2); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      padding: 2rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .skill-card:hover {
+      border-color: rgba(212,132,154,0.4);
+      transform: translateY(-4px);
+    }
+
+    .skill-card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .skill-card-title {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      padding: 0.3rem 0.65rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--soft);
+      transition: all 0.2s;
+    }
+
+    .skill-tag:hover {
+      background: rgba(212,132,154,0.08);
+      border-color: rgba(212,132,154,0.3);
+      color: var(--accent);
+    }
+
+    /* ── CERTIFICATIONS ── */
+    #certifications { background: var(--bg); }
+
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .cert-item {
+      padding: 1.5rem 1.8rem;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      transition: all 0.25s;
+      background: var(--surface);
+    }
+
+    .cert-item:hover {
+      border-color: rgba(212,132,154,0.5);
+      background: rgba(212,132,154,0.04);
+      transform: translateX(4px);
+    }
+
+    .cert-dot {
+      width: 8px; height: 8px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .cert-name {
+      font-size: 0.73rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .cert-provider {
+      font-size: 0.62rem;
+      color: var(--accent2);
+      letter-spacing: 0.06em;
+      margin-top: 0.2rem;
+    }
+
+    /* ── EDUCATION ── */
+    #education { background: var(--bg2); }
+
+    .edu-box {
+      max-width: 700px;
+      border: 1px solid var(--border);
+      padding: 3rem;
+      background: var(--surface);
+      position: relative;
+    }
+
+    .edu-box::after {
+      content: '"';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 8rem;
+      color: rgba(212,132,154,0.06);
+      position: absolute;
+      top: -1rem; right: 2rem;
+      line-height: 1;
+    }
+
+    .edu-degree {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      margin-bottom: 0.4rem;
+      line-height: 1.2;
+    }
+
+    .edu-minor {
+      font-size: 0.72rem;
+      color: var(--accent2);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+    }
+
+    .edu-school {
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.3rem;
+    }
+
+    .edu-date {
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 1.8rem;
+    }
+
+    .edu-gpa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--soft);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .edu-gpa span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--accent);
+    }
+
+    .edu-courses {
+      font-size: 0.7rem;
+      color: var(--muted);
+      line-height: 2;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--bg);
+      text-align: center;
+    }
+
+    .contact-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-email {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-style: italic;
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-block;
+      border-bottom: 1px solid rgba(200,169,110,0.3);
+      padding-bottom: 0.3rem;
+      margin: 2rem 0;
+      transition: border-color 0.3s;
+    }
+
+    .contact-email:hover { border-color: var(--accent); }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-link {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+
+    .contact-link:hover { color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 3rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.5rem; }
+      #home { padding: 7rem 1.5rem 4rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .exp-item { grid-template-columns: 1fr; gap: 1rem; }
+      .exp-meta { padding-left: 1rem; }
+      footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#home" class="nav-logo">Aleeha Salam</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-content fade-up visible">
+      <p class="hero-tag">Information Technology · Cybersecurity · AI</p>
+      <h1 class="hero-name">
+        Aleeha<br><em>Salam</em>
+      </h1>
+      <p class="hero-subtitle">
+        B.S. Information Technology @ <span>George Mason University</span><br>
+        Dean's List · GPA 3.71 · Minor in Criminology
+      </p>
+      <div class="hero-ctas">
+        <a href="#experience" class="btn-primary">View Experience</a>
+        <a href="mailto:salamaleeha@gmail.com" class="btn-outline">Get In Touch</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">About Me</div>
+    <h2 class="section-title">The person<br><em>behind the résumé</em></h2>
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p>
+          I'm a junior at George Mason University studying Information Technology with a minor in Criminology. I'm passionate about the intersection of technology, security, and human systems — from data analysis and AI tools to classroom management and community outreach.
+        </p>
+        <p>
+          With experience spanning AI-powered research, tutoring, substitute teaching, and professional organization leadership, I bring a uniquely human perspective to technical problems. I believe great technology is built by people who understand people.
+        </p>
+        <div class="about-stats">
+          <div class="stat-box">
+            <span class="stat-number">3.71</span>
+            <span class="stat-label">GPA / Dean's List</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number">8+</span>
+            <span class="stat-label">Certifications</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number">5</span>
+            <span class="stat-label">Languages Spoken</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number">2027</span>
+            <span class="stat-label">Expected Graduation</span>
+          </div>
+        </div>
+      </div>
+      <div class="fade-up">
+        <div class="section-label" style="margin-bottom: 1.2rem;">Languages</div>
+        <div class="about-langs">
+          <div class="lang-item"><span class="lang-name">Urdu</span><span class="lang-level">Fluent</span></div>
+          <div class="lang-item"><span class="lang-name">Punjabi</span><span class="lang-level">Fluent</span></div>
+          <div class="lang-item"><span class="lang-name">Hindi</span><span class="lang-level">Fluent</span></div>
+          <div class="lang-item"><span class="lang-name">Spanish</span><span class="lang-level">Conversational</span></div>
+          <div class="lang-item"><span class="lang-name">Turkish</span><span class="lang-level">Learning</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">Where I've<br><em>made an impact</em></h2>
+    <div class="exp-list">
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <p class="exp-date">Feb 2026 – Present</p>
+          <span class="exp-type">Education</span>
+        </div>
+        <div>
+          <p class="exp-role">On-Site Substitute Teacher</p>
+          <p class="exp-org">Fairfax County Public Schools</p>
+          <ul class="exp-bullets">
+            <li>Supervised K–12 classrooms across subjects and grade levels following provided lesson plans.</li>
+            <li>Provided academic support during independent work and classroom discussions.</li>
+            <li>Adapted to varied instructional needs and communicated student progress with school staff.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <p class="exp-date">Oct 2025 – Present</p>
+          <span class="exp-type">Leadership</span>
+        </div>
+        <div>
+          <p class="exp-role">Professional Outreach</p>
+          <p class="exp-org">Society of Women Engineers, GMU</p>
+          <ul class="exp-bullets">
+            <li>Managed professional outreach communications and coordinated scheduling with external partners.</li>
+            <li>Invited industry professionals, alumni, and leaders as panelists, speakers, and mentors.</li>
+            <li>Helped plan conferences, workshops, and networking events to expand SWE's reach.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <p class="exp-date">Sep 2025 – Present</p>
+          <span class="exp-type">Education</span>
+        </div>
+        <div>
+          <p class="exp-role">Statistics & Calculus Tutor</p>
+          <p class="exp-org">GMU Knack</p>
+          <ul class="exp-bullets">
+            <li>Tutored multiple students weekly on-site and virtually in calculus and statistics.</li>
+            <li>Simplified complex concepts with real-world examples and step-by-step breakdowns.</li>
+            <li>Improved student performance by reviewing homework and providing practice problems.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <p class="exp-date">Jun – Nov 2025</p>
+          <span class="exp-type">Internship</span>
+        </div>
+        <div>
+          <p class="exp-role">Extern — Advanced AI-Powered Data</p>
+          <p class="exp-org">Amazon · HP · Automation</p>
+          <ul class="exp-bullets">
+            <li>Conducted due diligence on investment opportunities by analyzing fundraising history, team composition, press coverage, and financials.</li>
+            <li>Leveraged advanced AI tools including Claude AI for market research, creating reports on market size, industry trends, and growth potential.</li>
+            <li>Segmented workforce data by role, shift, and theme to identify high-risk groups and early turnover patterns.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <p class="exp-date">May 2025 – Present</p>
+          <span class="exp-type">Marketing</span>
+        </div>
+        <div>
+          <p class="exp-role">Campus Ambassador</p>
+          <p class="exp-org">College Pulse</p>
+          <ul class="exp-bullets">
+            <li>Promoted research surveys to students through social media, direct outreach, and peer networks.</li>
+            <li>Applied strategic communication and digital marketing skills to engage student communities effectively.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">Technical Skills</div>
+    <h2 class="section-title">Tools &amp; <em>technologies</em></h2>
+    <div class="skills-grid">
+      <div class="skill-card fade-up">
+        <div class="skill-card-icon">⌨️</div>
+        <div class="skill-card-title">Programming Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-card-icon">🤖</div>
+        <div class="skill-card-title">AI & Data</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Claude AI</span>
+          <span class="skill-tag">AI Research</span>
+          <span class="skill-tag">Data Analysis</span>
+          <span class="skill-tag">Market Research</span>
+          <span class="skill-tag">Vector Search</span>
+        </div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-card-icon">🔒</div>
+        <div class="skill-card-title">Cybersecurity</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Google Cybersecurity</span>
+          <span class="skill-tag">Microsoft Security</span>
+          <span class="skill-tag">Azure AI</span>
+          <span class="skill-tag">Network Config</span>
+          <span class="skill-tag">Data Security</span>
+        </div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-card-icon">☁️</div>
+        <div class="skill-card-title">Cloud & Infrastructure</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Oracle Cloud</span>
+          <span class="skill-tag">OCI Data Science</span>
+          <span class="skill-tag">Azure</span>
+          <span class="skill-tag">PowerShell</span>
+          <span class="skill-tag">IT Support</span>
+        </div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-card-icon">🎨</div>
+        <div class="skill-card-title">Design & Systems</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Basic UX/UI</span>
+          <span class="skill-tag">Web Design</span>
+          <span class="skill-tag">Database Structures</span>
+          <span class="skill-tag">Systems Analysis</span>
+          <span class="skill-tag">Project Management</span>
+        </div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-card-icon">🤝</div>
+        <div class="skill-card-title">Soft Skills</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Digital Marketing</span>
+          <span class="skill-tag">Communication</span>
+          <span class="skill-tag">Tutoring</span>
+          <span class="skill-tag">Event Planning</span>
+          <span class="skill-tag">Leadership</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="section-label">Certifications</div>
+    <h2 class="section-title">Credentials &amp; <em>achievements</em></h2>
+    <div class="certs-grid">
+      <div class="cert-item fade-up">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Google Cybersecurity</div>
+          <div class="cert-provider">Google</div>
+        </div>
+      </div>
+      <div class="cert-item fade-up">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Google AI Essentials</div>
+          <div class="cert-provider">Google</div>
+        </div>
+      </div>
+      <div class="cert-item fade-up">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Google IT Support</div>
+          <div class="cert-provider">Google</div>
+        </div>
+      </div>
+      <div class="cert-item fade-up">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">PowerShell 7</div>
+          <div class="cert-provider">Microsoft</div>
+        </div>
+      </div>
+      <div class="cert-item fade-up">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">OCI 2025 Generative AI Professional</div>
+          <div class="cert-provider">Oracle</div>
+        </div>
+      </div>
+      <div class="cert-item fade-up">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">OCI 2025 Certified Data Science Professional</div>
+          <div class="cert-provider">Oracle</div>
+        </div>
+      </div>
+      <div class="cert-item fade-up">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Oracle AI Vector Search Certified Professional</div>
+          <div class="cert-provider">Oracle</div>
+        </div>
+      </div>
+      <div class="cert-item fade-up">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Azure AI Essentials Professional Certificate</div>
+          <div class="cert-provider">Microsoft & LinkedIn</div>
+        </div>
+      </div>
+      <div class="cert-item fade-up">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Microsoft Security Essentials</div>
+          <div class="cert-provider">Microsoft</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-label">Education</div>
+    <h2 class="section-title">Academic<br><em>foundation</em></h2>
+    <div class="edu-box fade-up">
+      <p class="edu-degree">B.S. Information Technology</p>
+      <p class="edu-minor">Minor in Criminology</p>
+      <p class="edu-school">George Mason University — Fairfax, VA</p>
+      <p class="edu-date">Expected Graduation: May 2027</p>
+      <div class="edu-gpa">
+        GPA <span>3.71</span> / 4.0 &nbsp;·&nbsp; Dean's List
+      </div>
+      <p class="edu-courses">
+        Relevant Coursework: Java · Python · Web Design · Database Structures ·
+        Systems Analysis &amp; Design · Project Management · Network Configurations · Data Security
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="section-label" style="justify-content: center;">Contact</div>
+      <h2 class="section-title" style="margin-bottom: 1rem;">Let's<br><em>connect</em></h2>
+      <p style="font-size: 0.78rem; color: var(--muted); line-height: 2; max-width: 400px; margin: 0 auto;">
+        I'm open to internship opportunities, research collaborations, and professional conversations.
+      </p>
+      <a href="mailto:salamaleeha@gmail.com" class="contact-email">salamaleeha@gmail.com</a>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/aleeha-salam" target="_blank" class="contact-link">LinkedIn →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Aleeha Salam. All rights reserved.</p>
+    <p>George Mason University · Fairfax, VA</p>
+  </footer>
+
+  <script>
+    // Fade-up on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach((el, i) => {
+      el.style.transitionDelay = `${(i % 4) * 80}ms`;
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
